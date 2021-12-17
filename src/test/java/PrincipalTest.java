@@ -182,7 +182,6 @@ public class PrincipalTest {
         Assert.assertEquals(true, true);
     }
 
-
     @Test
     void fail_given_diffents_teachers_that_not_give_extra_points() {
         Principal instance = new Principal(2019);
