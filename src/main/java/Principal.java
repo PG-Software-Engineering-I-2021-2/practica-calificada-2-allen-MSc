@@ -65,7 +65,7 @@ public class Principal {
 
             List<Pair<Employee, Boolean>> teachers = yearlyTeachers.getValue();
             for (Pair<Employee, Boolean> teacher : teachers) {
-                if (teacher.second() != true && teacher.getClass().getName() != ProfesorTC.class.getName()) {
+                if (!teacher.second() && !teacher.getClass().getName().equals(ProfesorTC.class.getName())) {
                     continue;
                 }
                 hasToIncreaseOneExtraPoint = true;
@@ -98,7 +98,7 @@ public class Principal {
         for (List<Pair<Employee, Boolean>> teachers : this.allYearsTeachers.values()){
             for (Pair<Employee, Boolean> pair : teachers){
                 if(pair.second()){
-                    System.out.println(pair.first().Name());
+                    System.out.println(pair.first().name());
                 }
             }
         }

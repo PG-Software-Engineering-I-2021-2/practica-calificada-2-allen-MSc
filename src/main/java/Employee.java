@@ -1,11 +1,11 @@
 public class Employee {
-    private String _Nombre;
+    private String nombre;
 
     Employee(String nombre) {
-        _Nombre = nombre;
+        this.nombre = nombre;
     }
 
-    public String Name() {
-        return _Nombre;
+    public String name() {
+        return nombre;
     }
 }
