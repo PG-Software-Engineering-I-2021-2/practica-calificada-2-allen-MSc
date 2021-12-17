@@ -216,4 +216,27 @@ public class PrincipalTest {
 
         Assert.assertEquals(-1, instance.calculateGrades(examsGrades, hasReachedMinimumClasses));
     }
+
+    @Test
+    void validate_sueldo_profesor_tc() {
+        ProfesorTC profesor = new ProfesorTC("pepito");
+
+        Assert.assertEquals(profesor.sueldo(), 2500);
+    }
+
+
+    @Test
+    void validate_sueldo_profesor_tp() {
+        ProfesorTP profesor = new ProfesorTP("joselito");
+
+        Assert.assertEquals(profesor.sueldo(), 2000);
+    }
+
+
+    @Test
+    void validate_sueldo_profesor_administrativo() {
+        Administrativo profesor = new Administrativo("jane");
+
+        Assert.assertEquals(profesor.sueldo(), 2100);
+    }
 }
