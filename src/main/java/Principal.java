@@ -1,8 +1,12 @@
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Principal {
+    private static Logger logger = Logger.getLogger(Principal.class.getName());
+
     private Map<Integer, List<Pair<Employee, Boolean>>> allYearsTeachers = Map.ofEntries(
             new AbstractMap.SimpleImmutableEntry<>(
                     2020,
@@ -43,7 +47,7 @@ public class Principal {
     }
 
     private float gradesWithMinimumClasses(final List<Pair<Integer, Float>> examsStudents, boolean hasReachedMinimumClasses) {
-        if (hasReachedMinimumClasses == false) {
+        if (!hasReachedMinimumClasses) {
             return 0f;
         }
 
@@ -65,7 +69,7 @@ public class Principal {
 
             List<Pair<Employee, Boolean>> teachers = yearlyTeachers.getValue();
             for (Pair<Employee, Boolean> teacher : teachers) {
-                if (!teacher.second() && !teacher.getClass().getName().equals(ProfesorTC.class.getName())) {
+                if (Boolean.FALSE.equals(teacher.second()) || !(teacher.first() instanceof ProfesorTC)) {
                     continue;
                 }
                 hasToIncreaseOneExtraPoint = true;
@@ -97,8 +101,8 @@ public class Principal {
     public void printExtraPointsTeachers(){
         for (List<Pair<Employee, Boolean>> teachers : this.allYearsTeachers.values()){
             for (Pair<Employee, Boolean> pair : teachers){
-                if(pair.second()){
-                    System.out.println(pair.first().name());
+                if(Boolean.TRUE.equals(pair.second())){
+                    logger.info("Profesor: {}".format(pair.first().name()));
                 }
             }
         }
